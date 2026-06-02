@@ -78,7 +78,7 @@ export default async function handler(req, res) {
 
       // 现在还不知道哪个 marketId 是 Asian Handicap
       // 等你确认后，把 ID 填到这里
-      const ASIAN_MARKET_IDS = []
+      const ASIAN_MARKET_IDS = ['1066', '10172', '10226', '10240']
 
       const asianOdds = []
 
