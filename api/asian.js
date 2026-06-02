@@ -1,16 +1,8 @@
 export default async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', '*')
+
   const TOKEN = 'cb0d1f2b-d225-453a-9328-42df773011be'
   const { mode, tid, fid } = req.query
-
-  const { mode, tid, fid } = req.query
-
-  if (!TOKEN) {
-    return res.status(500).json({
-      error: 'Missing ODDSPAPI_KEY',
-      message: '请在 Vercel Environment Variables 里设置 ODDSPAPI_KEY'
-    })
-  }
 
   try {
     let url
@@ -66,7 +58,7 @@ export default async function handler(req, res) {
       return res.status(200).json(result)
 
     } else if (mode === 'asian' && fid) {
-      // 真正筛选亚盘：这里先需要你知道哪个 marketId 是 Asian Handicap
+      // 这里以后筛选亚盘
       url = `https://api.oddspapi.io/v4/odds?apiKey=${TOKEN}&fixtureId=${fid}`
 
       const r = await fetch(url, {
@@ -84,8 +76,8 @@ export default async function handler(req, res) {
         })
       }
 
-      // 这里先留空，等你确认 Asian Handicap 的 marketId 后填进去
-      // 例如：const ASIAN_MARKET_IDS = ['xxxx', 'yyyy']
+      // 现在还不知道哪个 marketId 是 Asian Handicap
+      // 等你确认后，把 ID 填到这里
       const ASIAN_MARKET_IDS = []
 
       const asianOdds = []
