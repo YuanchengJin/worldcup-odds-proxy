@@ -5,7 +5,7 @@ export default async function handler(req, res) {
   if (!event_id) return res.status(400).json({ error: 'event_id required' })
   try {
     const r = await fetch(
-      `https://sports.bzzoiro.com/api/odds/compare/?event_id=${event_id}`,
+      `https://sports.bzzoiro.com/api/odds/compare/?event=${event_id}`,
       { headers: { 'Authorization': `Token ${TOKEN}` } }
     )
     const data = await r.json()
